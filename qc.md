@@ -1,19 +1,93 @@
 # Quality Control and Trimming
 
-## Lecture
-
-<br>
-
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR7ZN5Gc-3q5DR8CWQgyHhjUIc-6uKJnB48lDVMB7tWrt4gpZFipbJRVWfaqdxSw9n_WnMfXoFMZXds/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-
-## Practical
+## Let's get started!
 
 In this practical you will learn to import, view and check the quality of raw high thoughput sequencing sequencing data.
 
 The first dataset you will be working with is from an Illumina MiSeq dataset.
+
 The sequenced organism is an enterohaemorrhagic E. coli (EHEC) of the serotype O157, a potentially fatal gastrointestinal pathogen.
+
 The sequenced bacterium was part of an outbreak investigation in the St. Louis area, USA in 2011.
+
 The sequencing was done as paired-end 2x150bp.
+
+Click the **Start** button to move to the next step.
+
+## File Formats
+
+### The fasta format
+
+The fasta format was invented in 1988 and designed to represent nucleotide or peptide sequences. It originates from the [FASTA](https://en.wikipedia.org/wiki/FASTA) software package, but is now a standard in the world of bioinformatics.
+
+The first line in a FASTA file starts with a ">" (greater-than) symbol followed by the description or identifier of the sequence. Following the initial line (used for a unique description of the sequence) is the actual sequence itself in standard one-letter code.
+
+A few sample sequences:
+
+```
+>KX580312.1 Homo sapiens truncated breast cancer 1 (BRCA1) gene, exon 15 and partial cds
+GTCATCCCCTTCTAAATGCCCATCATTAGATGATAGGTGGTACATGCACAGTTGCTCTGGGAGTCTTCAG
+AATAGAAACTACCCATCTCAAGAGGAGCTCATTAAGGTTGTTGATGTGGAGGAGTAACAGCTGGAAGAGT
+CTGGGCCACACGATTTGACGGAAACATCTTACTTGCCAAGGCAAGATCTAG
+```
+
+```
+>KRN06561.1 heat shock [Lactobacillus sucicola DSM 21376 = JCM 15457]
+MSLVMANELTNRFNNWMKQDDFFGNLGRSFFDLDNSVNRALKTDVKETDKAYEVRIDVPGIDKKDITVDY
+HDGVLSVNAKRDSFNDESDSEGNVIASERSYGRFARQYSLPNVDESGIKAKCEDGVLKLTLPKLAEEKIN
+GNHIEIE
+```
+
+A fasta file can contain multiple sequence. Each sequence will be separated by their "header" line, starting by ">".
+
+Example:
+
+```
+>KRN06561.1 heat shock [Lactobacillus sucicola DSM 21376 = JCM 15457]
+MSLVMANELTNRFNNWMKQDDFFGNLGRSFFDLDNSVNRALKTDVKETDKAYEVRIDVPGIDKKDITVDY
+HDGVLSVNAKRDSFNDESDSEGNVIASERSYGRFARQYSLPNVDESGIKAKCEDGVLKLTLPKLAEEKIN
+GNHIEIE
+>3HHU_A Chain A, Human Heat-Shock Protein 90 (Hsp90)
+MPEETQTQDQPMEEEEVETFAFQAEIAQLMSLIINTFYSNKEIFLRELISNSSDALDKIRYESLTDPSKL
+DSGKELHINLIPNKQDRTLTIVDTGIGMTKADLINNLGTIAKSGTKAFMEALQAGADISMIGQFGVGFYS
+AYLVAEKVTVITKHNDDEQYAWESSAGGSFTVRTDTGEPMGRGTKVILHLKEDQTEYLEERRIKEIVKKH
+SQFIGYPITLFVEK
+```
+
+### The fastq format
+
+The fastq format is also a text based format to represent nucleotide sequences, but also contains the corresponding quality of each nucleotide. It is the standard for storing the output of high-throughput sequencing instruments such as the Illumina machines.
+
+A fastq file uses four lines per sequence:
+
+* Line 1 begins with a '@' character and is followed by a sequence identifier and an optional description (like a FASTA title line).
+* Line 2 is the raw sequence letters.
+* Line 3 begins with a '+' character and is optionally followed by the same sequence identifier (and any description) again.
+* Line 4 encodes the quality values for the sequence in Line 2, and must contain the same number of symbols as letters in the sequence.
+
+An example sequence in fastq format:
+
+```
+@SEQ_ID
+GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
++
+!''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF>>>>>>CCCCCCC65
+```
+
+#### Quality
+
+The quality, also called phred score, is the probability that the corresponding basecall is incorrect.
+
+Phred scores use a logarithmic scale, and are represented by ASCII characters, mapping to a quality usually going from 0 to 40.
+
+| Phred Quality Score | Probability of incorrect base call | Base call accuracy
+| --- | --- | ---
+| 10 | 1 in 10 | 90%
+| 20 | 1 in 100 | 99%
+| 30 | 1 in 1000 | 99.9%
+| 40 | 1 in 10,000 | 99.99%
+| 50 | 1 in 100,000 | 99.999%
+| 60 | 1 in 1,000,000 | 99.9999%
 
 ## Downloading the data
 
@@ -94,15 +168,15 @@ The files that we've downloaded are FASTQ files. Take a look at one of them with
 zless SRR957824_500K_R1.fastq.gz
 ```
 
-!!! tip
+:bulb:
 Use the spacebar to scroll down, and type ‘q’ to exit ‘less’
 
 You can read more on the FASTQ format in the [File Formats](file_formats.md) lesson.
 
-!!! question
+:question:
 Where does the filename come from?
 
-!!! question
+:question:
 Why are there 1 and 2 in the file names?
 
 ## FastQC
@@ -134,10 +208,10 @@ Alternatively you can look a these copies of them:
 - [SRR957824_500K_R1_fastqc.html](data/fastqc/SRR957824_500K_R1_fastqc.html)
 - [SRR957824_500K_R2_fastqc.html](data/fastqc/SRR957824_500K_R2_fastqc.html)
 
-!!! question
+:question:
 What should you pay attention to in the FastQC report?
 
-!!! question
+:question:
 Which file is of better quality?
 
 Pay special attention to the per base sequence quality and sequence length distribution.
@@ -166,7 +240,7 @@ scythe -a adapters.fasta SRR957824_500K_R1.fastq.gz -o SRR957824_adapt_R1.fastq
 scythe -a adapters.fasta SRR957824_500K_R2.fastq.gz -o SRR957824_adapt_R2.fastq 
 ```
 
-!!! question
+:question:
 What adapters do you use?
 
 ## Sickle
@@ -227,5 +301,5 @@ You can download the report or view it by clicking on the link below
 
 - [multiqc_report.html](data/fastqc/multiqc_report.html)
 
-!!! question
+:question:
 What did the trimming do to the per-base sequence quality, the per sequence quality scores and the sequence length distribution?
