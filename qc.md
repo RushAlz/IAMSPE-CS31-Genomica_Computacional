@@ -1,5 +1,27 @@
 # Quality Control and Trimming
 
+## Preparing the environment
+
+We will install Micromamba to manage our tools and environments.
+
+To install Micromamba, run the following command in your Cloud Shell:
+
+```{bash}
+"${SHELL}" <(curl -L micro.mamba.pm/install.sh)
+```
+
+```{bash}
+micromamba create -n fastqc_env -c bioconda fastqc
+```
+
+```{bash}
+micromamba create -n scythe_env -c hcc scythe
+```
+
+```{bash}
+micromamba create -n sickle_env -c bioconda sickle-trim
+```
+
 ## Let's get started!
 
 In this practical you will learn to import, view and check the quality of raw high thoughput sequencing sequencing data.
@@ -168,16 +190,19 @@ The files that we've downloaded are FASTQ files. Take a look at one of them with
 zless SRR957824_500K_R1.fastq.gz
 ```
 
-:bulb:
+<walkthrough-pin-section-icon	>
 Use the spacebar to scroll down, and type ‘q’ to exit ‘less’
+</walkthrough-pin-section-icon	>
 
 You can read more on the FASTQ format in the [File Formats](file_formats.md) lesson.
 
-:question:
+<walkthrough-notification-menu-icon>
 Where does the filename come from?
+</walkthrough-notification-menu-icon>
 
-:question:
+<walkthrough-notification-menu-icon>
 Why are there 1 and 2 in the file names?
+</walkthrough-notification-menu-icon>
 
 ## FastQC
 
@@ -208,11 +233,13 @@ Alternatively you can look a these copies of them:
 - [SRR957824_500K_R1_fastqc.html](data/fastqc/SRR957824_500K_R1_fastqc.html)
 - [SRR957824_500K_R2_fastqc.html](data/fastqc/SRR957824_500K_R2_fastqc.html)
 
-:question:
+<walkthrough-notification-menu-icon>
 What should you pay attention to in the FastQC report?
+</walkthrough-notification-menu-icon>
 
-:question:
+<walkthrough-notification-menu-icon>
 Which file is of better quality?
+</walkthrough-notification-menu-icon>
 
 Pay special attention to the per base sequence quality and sequence length distribution.
 Explanations for the various quality modules can be found [here](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/).
@@ -240,8 +267,9 @@ scythe -a adapters.fasta SRR957824_500K_R1.fastq.gz -o SRR957824_adapt_R1.fastq
 scythe -a adapters.fasta SRR957824_500K_R2.fastq.gz -o SRR957824_adapt_R2.fastq 
 ```
 
-:question:
+<walkthrough-notification-menu-icon>
 What adapters do you use?
+</walkthrough-notification-menu-icon>
 
 ## Sickle
 
@@ -294,12 +322,13 @@ and look at the reports
 Let's run MultiQC in our current directory
 
 ```bash
-multiqc .
+docker run -t -v `pwd`:`pwd` -w `pwd` ewels/multiqc multiqc .
 ```
 
 You can download the report or view it by clicking on the link below
 
 - [multiqc_report.html](data/fastqc/multiqc_report.html)
 
-:question:
+<walkthrough-notification-menu-icon>
 What did the trimming do to the per-base sequence quality, the per sequence quality scores and the sequence length distribution?
+</walkthrough-notification-menu-icon>
