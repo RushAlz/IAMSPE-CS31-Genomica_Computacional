@@ -355,14 +355,25 @@ and look at the reports (Download the html files and open them in your browser)
 
 [MultiQC](http://multiqc.info) is a tool that aggreagtes results from several popular QC bioinformatics software into one html report.
 
-Let's run MultiQC in our current directory
-
 ```bash
 conda deactivate
 mamba create -n multiqc_env -c bioconda python=3.11 multiqc
 conda activate multiqc_env
 ```
 
+Let's run MultiQC in our current directory
+
+```bash
+multiqc .
+```
 Now download the report (multiqc_report.html) and open it in your browser.
 
 **Question:** What did the trimming do to the per-base sequence quality, the per sequence quality scores and the sequence length distribution?
+
+## Conclusion
+
+<walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
+
+Congratulations!
+
+You've performed quality control analysis of sequencing data!
