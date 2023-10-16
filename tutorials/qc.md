@@ -2,36 +2,19 @@
 
 This tutorial has been created and distributed by **Hadrien Gourlé** (<https://www.hadriengourle.com/tutorials/>).
 
-## Preparing the environment
+## Let's get started!
 
-Let's install `Miniconda` to manage easily install tools in your virtual machine.
+In this practical you will learn to import, view and check the quality of raw high throughput sequencing sequencing data.
 
-Miniconda is a free minimal installer for **conda** that includes only conda, Python and a small number of other useful packages. Miniconda allows you to create a minimal self contained Python installation, and then use the Conda command to install additional packages.
+The first dataset you will be working with is from an Illumina MiSeq dataset.
 
-Run the following commands to install Miniconda:
+The sequenced organism is an enterohaemorrhagic E. coli (EHEC) of the serotype O157, a potentially fatal gastrointestinal pathogen.
 
-```bash
-mkdir -p ~/miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm -rf ~/miniconda3/miniconda.sh
-~/miniconda3/bin/conda init bash
-```
+The sequenced bacterium was part of an outbreak investigation in the St. Louis area, USA in 2011.
 
-Reload your shell to start conda
-```bash
-bash
-```
+The sequencing was done as paired-end 2x150bp.
 
-Add bioconda to your channels
-```bash 
-conda config --add channels bioconda
-```
-
-Install mamba to your `base` environment
-```bash
-conda install mamba
-```
+Click the **Start** button to move to the next step.
 
 ## File Formats (re-cap)
 
@@ -108,19 +91,37 @@ Phred scores use a logarithmic scale, and are represented by ASCII characters, m
 | 50 | 1 in 100,000 | 99.999%
 | 60 | 1 in 1,000,000 | 99.9999%
 
-## Let's get started!
+## Preparing the environment
 
-In this practical you will learn to import, view and check the quality of raw high throughput sequencing sequencing data.
+Let's install `Miniconda` to manage easily install tools in your virtual machine.
 
-The first dataset you will be working with is from an Illumina MiSeq dataset.
+Miniconda is a free minimal installer for **conda** that includes only conda, Python and a small number of other useful packages. Miniconda allows you to create a minimal self contained Python installation, and then use the Conda command to install additional packages.
 
-The sequenced organism is an enterohaemorrhagic E. coli (EHEC) of the serotype O157, a potentially fatal gastrointestinal pathogen.
+Run the following commands to install Miniconda:
 
-The sequenced bacterium was part of an outbreak investigation in the St. Louis area, USA in 2011.
+```bash
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+~/miniconda3/bin/conda init bash
+```
 
-The sequencing was done as paired-end 2x150bp.
+Reload your shell to start conda
+```bash
+bash
+```
 
-Click the **Start** button to move to the next step.
+Add bioconda and conda-forge to your channels
+```bash 
+conda config --add channels bioconda
+conda config --add channels conda-forge
+```
+
+Install mamba to your `base` environment
+```bash
+conda install mamba
+```
 
 ## Downloading the data
 
