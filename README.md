@@ -6,7 +6,7 @@ Para facilitar execução dos tutoriais, utilizaremos o [Google Cloud Shell](htt
 
 | **Aula** | **Data** | **Tema** | **Slides** | **Tutoriais** |
 |:--------:|:--------:|:--------:|:----------:|:-------------:|
-| 1 | 2023-10-11 | Introdução a Genômica, Sequenciamento | [Slides] |  |
+| 1 | 2023-10-11 | Introdução a Genômica, Sequenciamento | [Slides](https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional/blob/main/slides/CS31_Aula1.md) |  |
 | 2 | 2023-10-18 | Bioinformática, Linux e Processamento de dados de sequenciamento | [Slides] | [Fastq Quality-Control (QC) tutorial](https://shell.cloud.google.com/?ephemeral=true&cloudshell_git_repo=https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional.git&cloudshell_tutorial=tutorials/qc.md&shellonly=true) |
 
 
