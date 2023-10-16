@@ -1,5 +1,7 @@
 # Quality Control and Trimming
 
+This tutorial has been created and distributed by **Hadrien Gourlé** (<https://www.hadriengourle.com/tutorials/>).
+
 ## Preparing the environment
 
 Let's install `Miniconda` to manage easily install tools in your virtual machine.
