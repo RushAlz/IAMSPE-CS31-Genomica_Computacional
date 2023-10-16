@@ -8,7 +8,7 @@ Para facilitar execucao dos tutoriais, utilizaremos o Google Cloud Shell. Docume
 
 Clique no botão "Open in google cloud shell" abaixo para executar um tutorial de exemplo.
 
-[![Open this project in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional.git&page=editor&tutorial=qc.md)
+[![Start QC tutorial](http://gstatic.com/cloudssh/images/open-btn.png)]https://shell.cloud.google.com/?ephemeral=true&cloudshell_git_repo=https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional.git&cloudshell_tutorial=qc.md&shellonly=true)
 
 ## License
 
