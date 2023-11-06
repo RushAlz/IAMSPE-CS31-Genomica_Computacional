@@ -99,9 +99,9 @@ Starting with `SPAdes`. First activate the `conda` environment.
 conda activate spades_env
 ```
 
-Normally spades would try several values of k-mer and merge the results together, but here we will force it to just use `k=21` to save time. The assembly should take a few minutes.
+Normally spades would try several values of k-mer and merge the results together, but here we will force it to just use `k=31` to save time. The assembly should take a few minutes.
 ```bash
-spades.py --isolate -1 ERR486840_1.fastq.gz -2 ERR486840_2.fastq.gz -o m_genitalium_spades -t 2 -k 21
+spades.py --isolate -1 ERR486840_1.fastq.gz -2 ERR486840_2.fastq.gz -o m_genitalium_spades -t 2 -k 31
 ```
 
 Check the results in the folder
