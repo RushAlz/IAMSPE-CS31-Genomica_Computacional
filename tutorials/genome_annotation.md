@@ -48,16 +48,8 @@ conda install -y mamba
 Create a new environment and install `Prokka` using:
 
 ``` bash
-mamba create -n prokka_env -c conda-forge -c bioconda -c defaults prokka
+mamba create -n prokka_env -c conda-forge -c bioconda -c defaults prokka 
 ```
-
-`Prokka` is a `"wrapper"`; it collects together several pieces of software (from various authors), and so avoids "re-inventing the wheel".
-
-`Prokka` finds and annotates features (both protein-coding regions and RNA genes, i.e., tRNA, rRNA) present in a sequence. `Prokka` uses a two-step process for the annotation of protein-coding regions: first, protein-coding regions on the genome are identified using [Prodigal](http://compbio.ornl.gov/prodigal/); second, the function of the encoded protein is predicted by similarity to proteins in one of many protein or protein domain databases.
-
-`Prokka` is a software tool that can be used to annotate bacterial, archaeal, and viral genomes quickly, generating standard output files in `GenBank`, `EMBL` and `gff` formats.
-
-More information about `Prokka` can be found [here](https://github.com/tseemann/prokka).
 
 ## Input data
 
@@ -82,6 +74,14 @@ curl -O -J -L https://osf.io/xjm3n/download
 
 ## Running Prokka
 
+`Prokka` is a `"wrapper"`; it collects together several pieces of software (from various authors), and so avoids "re-inventing the wheel".
+
+`Prokka` finds and annotates features (both protein-coding regions and RNA genes, i.e., tRNA, rRNA) present in a sequence. `Prokka` uses a two-step process for the annotation of protein-coding regions: first, protein-coding regions on the genome are identified using [Prodigal](http://compbio.ornl.gov/prodigal/); second, the function of the encoded protein is predicted by similarity to proteins in one of many protein or protein domain databases.
+
+`Prokka` is a software tool that can be used to annotate bacterial, archaeal, and viral genomes quickly, generating standard output files in `GenBank`, `EMBL` and `gff` formats.
+
+More information about `Prokka` can be found [here](https://github.com/tseemann/prokka).
+
 Activate your conda environment
 
 ``` bash
@@ -102,15 +102,27 @@ Once Prokka has finished, examine each of its output files.
 
 ## Visualizing the annotation
 
-`Artemis` is a graphical Java program to browse annotated genomes. Download it [here](http://www.sanger.ac.uk/science/tools/artemis) and install it on your local computer.
+`IGV` is a graphical Java program to browse genomes. It supports many different data formats, including `BAM`, `BED`, `GFF`, `VCF` and `WIG`. It was developed by the Broad Institute and is available for free download at <http://www.broadinstitute.org/software/igv/>.
 
-Copy the `.gff` file produced by `Prokka` on your computer and open it with `Artemis`.
+`IGV` requires the genome fasta to be indexed. Let's do this using `sammtols`:
 
-You will be overwhelmed and/or confused at first (and possibly permanently). Here are some tips:
+``` bash
+mamba install -y samtools
+```
 
--   There are 3 panels: feature map (top), sequence (middle), feature list (bottom)
--   Click right-mouse-button on bottom panel and select Show products
--   Zooming is done via the vertical scroll bars in the two top panels
+``` bash
+samtools faidx m_genetalium_improved.fasta
+```
+
+Now, copy the genome assembly `.fasta`, the index `.fasta.fai` and the `.gff` file produced by `Prokka`.
+
+Here we will use the `IGV Web App`, but you can also download the standalone version and run locally.
+
+Got to this [link](https://igv.org/app/) and click on `Genome` then `Local File` and select the `.fasta` and `.fasta.fai` files you just copied. This will load the genome into the browser.
+
+Now load the gene annotations. Click on `Tracks` then `Local File` and select the `.gff` file you just copied. This will load the annotations into the browser.
+
+Now explore the genome annotations. You can zoom in and out using the mouse wheel. You can also search for specific genes using the search bar.
 
 ## Conclusion
 
