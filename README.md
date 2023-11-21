@@ -10,6 +10,8 @@ Para facilitar execução dos tutoriais, utilizaremos o [Google Cloud Shell](htt
 | 2 | 2023-10-18 | Bioinformática, Linux e Processamento de dados de sequenciamento | [Slides](https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional/blob/main/slides/CS31_Aula2.pdf) | [Fastq Quality-Control (QC) tutorial](https://shell.cloud.google.com/?ephemeral=true&cloudshell_git_repo=https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional.git&cloudshell_tutorial=tutorials/qc.md&shellonly=true) |
 | 3 | 2023-11-01 | Montagem de genomas | [Slides](https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional/blob/main/slides/CS31_Aula3.pdf) | [Genome Assembly tutorial](https://shell.cloud.google.com/?ephemeral=true&cloudshell_git_repo=https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional.git&cloudshell_tutorial=tutorials/genome_assembly.md&shellonly=true) |
 | 4 | 2023-11-08 | Anotacao de genomas | [Slides](https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional/blob/main/slides/CS31_Aula4.pdf) | [Genome Annotation tutorial](https://shell.cloud.google.com/?ephemeral=true&cloudshell_git_repo=https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional.git&cloudshell_tutorial=tutorials/genome_annotation.md&shellonly=true) |
+| 5 | 2023-11-22 | Mapeando variantes | [Slides](https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional/blob/main/slides/CS31_Aula5.pdf) | [Variant mapping tutorial](https://shell.cloud.google.com/?ephemeral=true&cloudshell_git_repo=https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional.git&cloudshell_tutorial=tutorials/mapping_variants.md&shellonly=true) |
+
 
 ## License
 
