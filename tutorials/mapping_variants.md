@@ -1,4 +1,4 @@
-# Mapping genetic variants with GATK
+## Mapping genetic variants with GATK
 
 In this tutorial we will learn how to map germline genetic variants to a reference genome. 
 We will follow the [GATK best practices workflow](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels)
@@ -47,7 +47,7 @@ conda install -y mamba
 Create a new environment and install `GATK` and other requirements using:
 
 ```bash
-mamba create -y -n gatk_env -c conda-forge -c bioconda -c defaults gatk4 samtools bcftools bwa  
+mamba create -y -n gatk_env -c conda-forge -c bioconda -c defaults gatk4 samtools sambamba bwa R
 ```
 
 Activate the environment with:
@@ -64,17 +64,24 @@ Let's check the contents of the `files` folder:
 ls -alh tutorials/files/*
 ```
 
-To start let's decompress the reference genome file:
+Now, let's set some variables to make it easier to run the commands in this tutorial:
+
+Go the the `files` folder:
 ```bash
-cd tutorials/files/reference_genome
-gunzip hg38.chr22.fasta.gz
+cd tutorials/files
 ```
 
-Now, let's set some variables to make it easier to run the commands in this tutorial:
+Create the following variables:
 ```bash
-FASTQ_FOLDER="~/cloudshell_open/IAMSPE-CS31-Genomica_Computacional/tutorials/files/samples_reads/"
-RESOURCES_FOLDER="~/cloudshell_open/IAMSPE-CS31-Genomica_Computacional/tutorials/files/resources/"
-REF="~/cloudshell_open/IAMSPE-CS31-Genomica_Computacional/tutorials/files/reference_genome/hg38.chr22.fasta"
+FASTQ_FOLDER="${PWD}/samples_reads/"
+RESOURCES_FOLDER="${PWD}/resources/"
+REF="${PWD}/reference_genome/hg38.chr22.fasta"
+```
+
+To start let's decompress the reference genome file:
+```bash
+cd reference_genome
+gunzip hg38.chr22.fasta.gz
 ```
 
 Finally, let's set a folder to work on the analysis and save the results:
@@ -90,6 +97,11 @@ The first step is to map the reads to the reference genome. But before we do tha
 bwa index ${REF}
 ```
 
+We also need `samtools` index:
+```bash
+samtools faidx ${REF}
+```
+
 You can check the contents of the folder to see the new files created by `bwa`:
 ```bash
 ls -alh ${REF}*
@@ -103,11 +115,12 @@ mkdir -p ${ALIGN_FOLDER}
 
 Mapping reads to the reference using BWA-MEM
 ```bash
-## ALIGN RAW READS
-mkdir -p ${ALIGN_FOLDER}
-bwa mem -M -t 2 \
+bwa mem -M \
+  -t 2 \
   -R "@RG\tID:tiny\tSM:tiny\tPL:ILLUMINA" \
-  ${REF} ${FASTQ_FOLDER}/tiny_R1.fastq.gz ${FASTQ_FOLDER}/tiny_R2.fastq.gz > ${ALIGN_FOLDER}/tiny.sam
+  ${REF} \
+  ${FASTQ_FOLDER}/tiny_R1.fastq.gz \
+  ${FASTQ_FOLDER}/tiny_R2.fastq.gz > ${ALIGN_FOLDER}/tiny.sam
 ```
 
 Convert sam to bam
@@ -181,9 +194,13 @@ gatk CollectInsertSizeMetrics \
 
 ## Call Variants - gatk haplotype caller
 
+First create a folder to store the results:
 ```bash
+RESULTS_FOLDER="${PWD}/results"
 mkdir -p ${RESULTS_FOLDER}
+```
 
+```bash
 gatk HaplotypeCaller \
   -R ${REF} \
   -I ${ALIGN_FOLDER}/tiny.sort.dedup.bqsr.bam \
