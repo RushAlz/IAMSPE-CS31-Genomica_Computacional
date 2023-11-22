@@ -6,6 +6,11 @@ We will follow the [GATK best practices workflow](https://gatk.broadinstitute.or
 For purposes of demonstration, in this tutorial sequencing files were reduced to a small subset of reads. 
 Also the reference genome has been restricted to chromosome 22.
 
+References from which some of the tutorial was based on: 
+* [Bioinformagician](https://github.com/kpatel427/YouTubeTutorials/blob/main/variant_calling.sh)
+* [sib-swiss](https://sib-swiss.github.io/NGS-variants-training/2023.2/day2/annotation/)
+* [Joe McGirr](https://joemcgirr.github.io/files/code_tutorials/my_genome/SnpEFF.html)
+
 Click the **Start** button to move to the next step.
 
 ## Preparing the environment
