@@ -34,24 +34,24 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 ```
 
-Install `mamba` to your `base` environment
+Accept the `Terms of Service` for `conda`:
 ```bash
-conda install -y mamba
+conda tos accept
 ```
 
 All of the tools needed for this assignment (except `SPAdes` and `BUSCO`) can be installed in the same environment using:
 ```bash
-mamba create -n genome_assembly_env samtools bowtie2 quast megahit pilon
+conda create -n genome_assembly_env samtools bowtie2 quast megahit pilon
 ```
 
 Let's now create a separate environment for `SPAdes`
 ```bash
-mamba create -n spades_env spades
+conda create -n spades_env spades
 ```
 
 Finally another environment for `BUSCO`
 ```bash
-mamba create -n busco_env python=3.7 busco=5.2.2
+conda create -n busco_env python=3.7 busco=5.2.2
 conda activate busco_env
 ```
 

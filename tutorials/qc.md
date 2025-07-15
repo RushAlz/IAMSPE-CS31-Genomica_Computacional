@@ -118,9 +118,9 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 ```
 
-Install mamba to your `base` environment
+Accept the `Terms of Service` for `conda`:
 ```bash
-conda install mamba
+conda tos accept
 ```
 
 ## Downloading the data
@@ -222,7 +222,7 @@ However, FastQC is also available as a command line utility on the training serv
 Lets now create a conda enviroment and install FastQC.
 
 ```bash
-mamba create -n fastqc_env -c bioconda fastqc
+conda create -n fastqc_env -c bioconda fastqc
 ```
 
 Activate the environment so you can run the tool
@@ -273,7 +273,7 @@ conda deactivate
 Create another conda environment and install Scythe
 
 ```bash
-mamba create -n scythe_env -c hcc scythe
+conda create -n scythe_env -c hcc scythe
 ```
 
 Activate the environment so you can run the tool
@@ -310,7 +310,7 @@ First let's again prepare the conda environment
 
 ```bash
 conda deactivate
-mamba create -n sickle_env -c bioconda sickle-trim
+conda create -n sickle_env -c bioconda sickle-trim
 conda activate sickle_env
 ```
 
@@ -357,7 +357,7 @@ and look at the reports (Download the html files and open them in your browser)
 
 ```bash
 conda deactivate
-mamba create -n multiqc_env -c bioconda python=3.11 multiqc
+conda create -n multiqc_env -c bioconda python=3.11 multiqc
 conda activate multiqc_env
 ```
 

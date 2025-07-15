@@ -17,8 +17,7 @@ Let's install `Miniconda` to manage and easily install tools in your virtual mac
 `Miniconda` is a free minimal installer for **conda** that includes only `conda`, Python, and a small number of other useful packages. `Miniconda` allows you to create a minimal, self-contained Python installation and then use the `conda` command to install additional packages.
 
 Run the following commands to install `Miniconda`:
-
-``` bash
+```bash
 mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
@@ -27,48 +26,41 @@ rm -rf ~/miniconda3/miniconda.sh
 ```
 
 Reload your shell to enable the `conda` command
-
-``` bash
+```bash
 bash
 ```
 
 Add `bioconda` and `conda-forge` to your channels
-
-``` bash
+```bash
 conda config --add channels bioconda
 conda config --add channels conda-forge
 ```
 
-Install `mamba` to your `base` environment
-
-``` bash
-conda install -y mamba
+Accept the `Terms of Service` for `conda`:
+```bash
+conda tos accept
 ```
 
 Create a new environment and install `Prokka` using:
-
-``` bash
-mamba create -n prokka_env -c conda-forge -c bioconda -c defaults prokka 
+```bash
+conda create -n prokka_env -c conda-forge -c bioconda -c defaults prokka 
 ```
 
 ## Input data
 
 Prokka requires assembled contigs. You can prepare your working directory for this annotation tutorial.
-
-``` bash
+```bash
 mkdir ~/annotation
 cd ~/annotation
 ```
 
 You will download an improved assembly of *Mycoplasma genitalium* into your data directory:
-
-``` bash
+```bash
 curl -O -J -L https://osf.io/7eaky/download
 ```
 
 You will also need a set of proteins specific to *Mycoplasma* for the annotation. Here is a file containing the *Mycoplasma* proteins retrieved from `Swiss-Prot` database (3041 sequences)
-
-``` bash
+```bash
 curl -O -J -L https://osf.io/xjm3n/download
 ```
 
@@ -83,12 +75,11 @@ curl -O -J -L https://osf.io/xjm3n/download
 More information about `Prokka` can be found [here](https://github.com/tseemann/prokka).
 
 Activate your conda environment
-
-``` bash
+```bash
 conda activate prokka_env
 ```
 
-``` bash
+```bash
 prokka --outdir annotation --kingdom Bacteria \
 --proteins uniprot_mycoplasma_reviewed.faa m_genetalium_improved.fasta
 ```
@@ -106,11 +97,11 @@ Once Prokka has finished, examine each of its output files.
 
 `IGV` requires the genome fasta to be indexed. Let's do this using `sammtols`:
 
-``` bash
-mamba install -y samtools
+```bash
+conda install -y samtools
 ```
 
-``` bash
+```bash
 samtools faidx m_genetalium_improved.fasta
 ```
 

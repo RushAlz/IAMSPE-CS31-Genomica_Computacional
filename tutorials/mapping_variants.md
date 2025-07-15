@@ -40,14 +40,14 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 ```
 
-Install `mamba` to your `base` environment
+Accept the `Terms of Service` for `conda`:
 ```bash
-conda install -y mamba
+conda tos accept
 ```
 
 Create a new environment and install `GATK` and other requirements using:
 ```bash
-mamba create -y -n gatk_env -c conda-forge -c bioconda -c defaults gatk4 samtools sambamba bwa R snpeff snpsift
+conda create -y -n gatk_env -c conda-forge -c bioconda -c defaults gatk4 samtools sambamba bwa R snpeff snpsift
 ```
 
 Activate the environment with:
