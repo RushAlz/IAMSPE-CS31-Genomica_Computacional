@@ -274,6 +274,7 @@ gatk VariantFiltration \
 ```
 
 Check the number of variants that passed the filters:
+
 ```bash
 grep -v "^#" ${RESULTS_FOLDER}/filtered_snps.vcf | cut -f 7 | sort | uniq -c
 ```
@@ -315,6 +316,7 @@ cat ${RESULTS_FOLDER}/analysis-ready-indels.vcf | grep -v -E "DP_filter|GQ_filte
 ```
 
 Double-check the number of variants that passed the filters:
+
 ```bash
 grep -v "^#" ${RESULTS_FOLDER}/analysis-ready-snps-filteredGT.vcf | cut -f 7 | sort | uniq -c
 ```
@@ -402,9 +404,9 @@ grep "Benign" ${RESULTS_FOLDER}/analysis-ready-variants-filteredGT.clinvar.table
 ## Annotate Variants (part 3)
 
 Alternatively, we can use `GATK Funcotator`. First we need to download the data sources:
+
 ```bash
-cd ${RESOURCES_FOLDER}
-gatk FuncotatorDataSourceDownloader --germline --validate-integrity --extract-after-download
+curl https://storage.googleapis.com/gcp-public-data--broad-references/funcotator/funcotator_dataSources.v1.8.hg38.20230908s.tar.gz | tar -xzvf - -C ${RESOURCES_FOLDER}
 ```
 
 A folder named `funcotator_dataSources.v1.7.20200521g` with several files will be created. 
@@ -420,7 +422,7 @@ gatk Funcotator \
 	--variant ${RESULTS_FOLDER}/analysis-ready-variants-filteredGT.vcf \
 	--reference ${REF} \
 	--ref-version hg38 \
-	--data-sources-path ${RESOURCES_FOLDER}/funcotator_dataSources.v1.7.20200521g \
+	--data-sources-path ${RESOURCES_FOLDER}/funcotator_dataSources.v1.8.hg38.20230908s \
 	--output ${RESULTS_FOLDER}/analysis-ready-variants-filteredGT-functotated.vcf \
 	--output-file-format VCF 
 ```
