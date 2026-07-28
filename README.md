@@ -7,7 +7,7 @@ Para facilitar execução dos tutoriais, utilizaremos o [Google Cloud Shell](htt
 | **Aula** | **Data** | **Tema** | **Slides** | **Tutoriais** |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | 1 | 2026-07-27 | Introdução e processamento de dados de sequenciamento | [Slides](https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional/blob/main/slides/CS31_Aula1.pdf) | [Fastq Quality-Control (QC) tutorial](https://shell.cloud.google.com/?ephemeral=true&cloudshell_git_repo=https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional.git&cloudshell_tutorial=tutorials/qc.md&shellonly=true) |
-| 2 | 2026-07-28 | Montagem de genomas | [~~Slides~~] | [~~Genome Assembly tutorial~~] |
+| 2 | 2026-07-28 | Montagem de genomas | [~~Slides~~] | [Genome Assembly tutorial](https://shell.cloud.google.com/?ephemeral=true&cloudshell_git_repo=https://github.com/RushAlz/IAMSPE-CS31-Genomica_Computacional.git&cloudshell_tutorial=tutorials/genome_assembly.md&shellonly=true) |
 | 3 | 2026-07-29 | Anotacao de genomas | [~~Slides~~] | [~~Genome Annotation tutorial~~] |
 | 4 | 2026-07-30 | Mapeando variantes | [~~Slides~~] | [~~Variant mapping tutorial~~] |
 
